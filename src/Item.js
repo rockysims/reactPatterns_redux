@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { connect } from "react-redux";
-import { setTodoCompleted, removeTodo } from "./redux/actions";
+import { actions } from "./redux";
 
 import './Item.css';
 
@@ -25,6 +25,7 @@ class Item extends Component {
 	}
 }
 
+const { setTodoCompleted, removeTodo } = actions;
 export default connect(
 	null,
 	{

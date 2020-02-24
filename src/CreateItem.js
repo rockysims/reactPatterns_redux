@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { connect } from "react-redux";
-import { addTodo } from "./redux/actions";
+import { actions } from "./redux";
 
 class CreateItem extends Component {
 	constructor(props) {
@@ -42,6 +42,7 @@ class CreateItem extends Component {
 	}
 }
 
+const { addTodo } = actions;
 export default connect(
 	null,
 	{
