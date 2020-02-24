@@ -1,26 +1,40 @@
-import { ADD_TODO, REMOVE_TODO, SET_TODO_COMPLETED } from "./actionTypes";
+export const initialState = {
+	items: []
+};
 
 let nextId = 201;
-
 export const addTodo = title => ({
-	type: ADD_TODO,
-	payload: {
-		id: nextId++,
-		title
+	type: addTodo.name,
+	reduce: state => {
+		const newItem = {
+			userId: 1,
+			id: nextId++,
+			title,
+			completed: false
+		};
+		return {
+			...state,
+			items: [...state.items, newItem]
+		};
 	}
 });
 
-export const removeTodo = id => ({
-	type: REMOVE_TODO,
-	payload: {
-		id
-	}
+export const removeTodo = (id) => ({
+	type: removeTodo.name,
+	reduce: state => ({
+		...state,
+		items: state.items.filter(item => item.id !== id)
+	})
 });
 
 export const setTodoCompleted = (id, completed) => ({
-	type: SET_TODO_COMPLETED,
-	payload: {
-		id,
-		completed
-	}
+	type: setTodoCompleted.name,
+	reduce: state => ({
+		...state,
+		items: state.items.map(item => 
+			(item.id === id)
+				? { ...item, completed }
+				: item
+		)
+	})
 });
