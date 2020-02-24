@@ -2,15 +2,13 @@ import { ADD_TODO, REMOVE_TODO, SET_TODO_COMPLETED } from "./actionTypes";
 
 let nextId = 201;
 
-export const addTodo = title => {
-	return {
-		type: ADD_TODO,
-		payload: {
-			id: nextId++,
-			title
-		}
-	};
-};
+export const addTodo = title => ({
+	type: ADD_TODO,
+	payload: {
+		id: nextId++,
+		title
+	}
+});
 
 export const removeTodo = id => ({
 	type: REMOVE_TODO,
