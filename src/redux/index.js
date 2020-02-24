@@ -3,12 +3,10 @@ const actByType = {};
 
 let nextId = 201;
 actByType['addTodo'] = {
-	buildPayload: title => {
-		return {
-			id: nextId++,
-			title
-		};
-	},
+	buildPayload: title => ({
+		id: nextId++,
+		title
+	}),
 	reduce: (state, payload) => {
 		const { id, title } = payload;
 		const newItem = {
